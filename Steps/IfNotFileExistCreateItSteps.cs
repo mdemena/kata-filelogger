@@ -9,19 +9,20 @@ namespace com.mdemena.katas.fileLogger.Scenarios
     {
         private Entities.FileLogger _fileLogger;
         private Entities.File _file;
+        private string _fileName = string.Format("log{0}.txt", DateTime.Today.ToString("YYYYMMDD"));
         private string _message = "Text Message IfNotExist";
 
         [Given(@"I have a log file"), Scope(Tag = "IfNotFileExistCreateIt")]
         public void GivenIHaveALogFile()
         {
-            _file = new Entities.File("log.txt");
+            _file = new Entities.File(_fileName);
             _fileLogger = new Entities.FileLogger(_file);
         }
 
         [Given(@"I have a log file"), Scope(Tag = "IfFileExist")]
         public void GivenIHaveALogFileExist()
         {
-            _file = new Entities.File("log.txt");
+            _file = new Entities.File(_fileName);
             _fileLogger = new Entities.FileLogger(_file);
         }
 
